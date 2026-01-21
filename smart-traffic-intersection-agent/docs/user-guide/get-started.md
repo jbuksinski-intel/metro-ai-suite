@@ -82,8 +82,9 @@ For advanced users who need more control over the configuration, you can manuall
 If you prefer to manually configure environment variables instead of using the setup script, see the [Environment Variables Guide](./environment-variables.md) for complete details. Key variables include:
 
 ```bash
-# Core Scene Intelligence Configuration
-export SCENE_INTELLIGENCE_PORT=8082
+# Core Smart Traffic Intelligence Configuration
+export TRAFFIC_INTELLIGENCE_PORT=8081
+export TRAFFIC_INTELLIGENCE_UI_PORT=7860
 export LOG_LEVEL=INFO
 
 # MQTT Broker Configuration
@@ -101,7 +102,8 @@ export SCENESCAPE_PORT=443
 export DLSTREAMER_PORT=8555
 
 # Traffic Analysis Parameters
-export HIGH_DENSITY_THRESHOLD=5.0
+export HIGH_DENSITY_THRESHOLD=10
+export MODERATE_DENSITY_THRESHOLD=5
 export VLM_WORKERS=4
 export VLM_COOLDOWN_MINUTES=1
 export VLM_TIMEOUT_SECONDS=10
@@ -184,7 +186,7 @@ The Scene Intelligence stack uses several configuration files located in the `co
 
 ### Traffic Intersection Agent Configuration
 
-The Traffic Intersection Agent service configuration is at `src/traffic-intelligence/config/traffic_intelligence.json`:
+The Traffic Intersection Agent service configuration is at `src/config/traffic_agent.json`:
 
 ```json
 {
@@ -349,7 +351,7 @@ Validate configuration files:
 
 ```bash
 # Check JSON syntax
-cat src/traffic-intelligence/config/traffic_intelligence.json | jq .
+cat src/config/traffic_agent.json | jq .
 cat config/scene_intelligence_config.json | jq .
 
 # Verify mounted configuration
