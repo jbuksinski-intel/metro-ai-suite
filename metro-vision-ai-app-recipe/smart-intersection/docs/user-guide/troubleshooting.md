@@ -1,10 +1,14 @@
-# Get Help
+# Troubleshooting
 
 This page provides comprehensive support and troubleshooting information for the Smart Intersection Sample Application. It is divided into the following sections:
 
   - **Common Issues**: General troubleshooting steps for resolving issues like container failures, port conflicts, and missing dependencies.
   - **Troubleshooting Docker Deployments**: Steps to address problems specific to Docker deployments.
   - **Troubleshooting Helm Deployments**: Guidance for resolving issues in Helm-based deployments.
+
+If you encounter any problems with the application not addressed here, check the
+[GitHub Issues](https://github.com/open-edge-platform/edge-ai-suites/issues) board. Feel free
+to file new tickets there (after learning about the guidelines for [Contributing](https://github.com/open-edge-platform/edge-ai-suites/blob/main/CONTRIBUTING.md)).
 
 ## Troubleshooting Common Issues
 
@@ -93,7 +97,7 @@ This page provides comprehensive support and troubleshooting information for the
   - Now the Application UI should show objects detected on scene.
 
   **Note**: For Helm deployments, use the equivalent commands to inspect logs and restart the scene controller. For example:
-  
+
   - Inspect the logs:
     ```bash
     kubectl logs pod/<scene-pod-name> -n smart-intersection
@@ -128,6 +132,3 @@ This page provides comprehensive support and troubleshooting information for the
      ```bash
      kubectl get svc -n {{namespace}}
      ```
-
-## Support
-- **Raise an Issue on GitHub**: [GitHub Issues](https://github.com/open-edge-platform/edge-ai-suites/issues)
