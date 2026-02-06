@@ -32,7 +32,7 @@ from typing import Optional, Set
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, status
 
 router = APIRouter(tags=["metrics"])
-logger = logging.getLogger("app.metrics")
+logger = logging.getLogger("live-metrics-service.relay")
 
 # Single collector websocket (None if not connected)
 collector_ws: Optional[WebSocket] = None
@@ -119,7 +119,9 @@ async def collector_websocket(websocket: WebSocket):
                     await client.send_json(wrapped_data, mode="text")
                     logger.debug("Forwarded metrics to client %s", client.client)
                 except Exception as e:
-                    logger.error("Error sending to client %s: %s", client.client, e)
+                    logger.error(
+                        "Error sending to client %s: %s", client.client, e
+                    )
                     disconnects.append(client)
 
             # Cleanup disconnected clients
@@ -127,7 +129,9 @@ async def collector_websocket(websocket: WebSocket):
                 async with clients_lock:
                     for client in disconnects:
                         client_connections.discard(client)
-                logger.debug("Cleaned up %d disconnected clients", len(disconnects))
+                logger.debug(
+                    "Cleaned up %d disconnected clients", len(disconnects)
+                )
 
     except WebSocketDisconnect:
         logger.info("Collector disconnected: %s", websocket.client)
@@ -156,7 +160,7 @@ async def clients_websocket(websocket: WebSocket):
 
     Client Integration:
         JavaScript example:
-            const ws = new WebSocket('ws://localhost:4173/ws/clients');
+            const ws = new WebSocket('ws://localhost:9090/ws/clients');
             ws.onmessage = (event) => {
                 const data = JSON.parse(event.data);
                 // data.metrics = array of metric objects
@@ -175,7 +179,9 @@ async def clients_websocket(websocket: WebSocket):
 
     async with clients_lock:
         client_connections.add(websocket)
-        logger.debug("Total clients connected: %d", len(client_connections))
+        logger.debug(
+            "Total clients connected: %d", len(client_connections)
+        )
 
     try:
         while True:
@@ -198,11 +204,12 @@ async def clients_websocket(websocket: WebSocket):
     finally:
         async with clients_lock:
             client_connections.discard(websocket)
-            logger.debug("Client removed. Total clients: %d", len(client_connections))
+            logger.debug(
+                "Client removed. Total clients: %d", len(client_connections)
+            )
 
 
-@router.get("/api/metrics/status")
-async def metrics_status():
+async def get_status() -> dict:
     """
     Get the current status of metrics collection.
 

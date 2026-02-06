@@ -6,12 +6,7 @@ FROM python:3.13-slim@sha256:49b618b8afc2742b94fa8419d8f4d3b337f111a0527d417a1db
 # Build stage
 FROM base AS builder
 
-# Install system dependencies needed for building
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install uv
+# Install uv for fast package installation
 RUN pip install --no-cache-dir uv==0.4.23
 
 # Set working directory
@@ -25,10 +20,6 @@ RUN uv venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 ENV UV_PROJECT_ENVIRONMENT="/opt/venv"
 RUN uv sync --frozen --no-dev --no-install-project
-
-# Download Chart.js during build for airgapped runtime
-RUN mkdir -p ui/js/vendor && \
-    curl -o ui/js/vendor/chart.js https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js
 
 # Production stage
 FROM base AS production
@@ -52,16 +43,17 @@ COPY --from=builder /opt/venv /opt/venv
 WORKDIR /app
 
 # Copy application code
-COPY --chown=appuser:appuser main.py ./
-COPY --chown=appuser:appuser backend ./backend
-COPY --chown=appuser:appuser ui ./ui
-
-# Copy Chart.js from builder stage
-COPY --from=builder --chown=appuser:appuser /app/ui/js/vendor/chart.js ./ui/js/vendor/chart.js
+COPY --chown=appuser:appuser app ./app
 
 # Switch to non-root user
 USER appuser
 
-EXPOSE 4173
+# Default port
+EXPOSE 9090
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "4173"]
+# Environment variables with defaults
+ENV METRICS_PORT=9090
+ENV LOG_LEVEL=INFO
+ENV CORS_ORIGINS="*"
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "9090"]
