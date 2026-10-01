@@ -37,3 +37,30 @@ Metro AI Suite reference implementations and platform blueprints:
 - [Interactive Digital Avatar](interactive-digital-avatar): A reference implementation for integrating 2D/3D avatars with a backend LLM server to provide real-time and intelligent responses to user queries through speech-based conversational interfaces.
 
 For hardware partner workflow, see the [Metro AI Suite Hardware Partner Workflow](docs/hardware-partner-workflow.md). For developer workflow, see the [Metro AI Suite Developer Workflow](docs/developer-workflow.md).
+
+## Contribute
+
+Read the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting issues and pull requests.
+
+## Community and Support
+
+For support, submit your bug report and feature request to [Github Issues](https://github.com/open-edge-platform/metro-ai-suite/issues).
+
+## License
+
+The **Metro AI Suite** project is licensed under the [APACHE 2.0](LICENSE), except for the following sample applications:
+
+| Sample Application                                                                | License                  |
+|:----------------------------------------------------------------------------------|:-------------------------|
+|[Smart Intersection](metro-vision-ai-app-recipe/smart-intersection) | [LIMITED EDGE SOFTWARE DISTRIBUTION LICENSE AGREEMENT](metro-vision-ai-app-recipe/smart-intersection/LICENSE.txt) |
+
+## Intended Use
+
+Applications developed in this repository, unless stated otherwise, are intended for reference
+and demonstration purposes, not for production environments.
+Certain features, such as authentication, TLS termination, and external access controls are
+assumed to be covered at the infrastructure level.
+
+For more information, refer to the
+[Notes on Usage](https://docs.openedgeplatform.intel.com/dev/OEP-articles/notes-on-usage.html)
+document.

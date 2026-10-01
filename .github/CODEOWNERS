@@ -1,0 +1,68 @@
+/                                                 @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard
+/README.md                                        @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard  @open-edge-platform/open-edge-platform-docs-write
+/agentic-predictive-maintenance-pipeline                @14pankaj @bharagha @yogeshmpandey @madhuri-rai07 @krish918 @hteeyeoh @bhardwaj-nakul @Supriya-Krishnamurthi @rrajore
+/agentic-predictive-maintenance-pipeline/README.md      @14pankaj @bharagha @yogeshmpandey @madhuri-rai07 @krish918 @hteeyeoh @bhardwaj-nakul @Supriya-Krishnamurthi @rrajore @open-edge-platform/open-edge-platform-docs-write
+/agentic-predictive-maintenance-pipeline/docs           @14pankaj @bharagha @yogeshmpandey @madhuri-rai07 @krish918 @hteeyeoh @bhardwaj-nakul @Supriya-Krishnamurthi @rrajore @open-edge-platform/open-edge-platform-docs-write
+/image-based-video-search/                        @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard @rohitkatakol
+/image-based-video-search/docs/                   @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard @rohitkatakol  @open-edge-platform/open-edge-platform-docs-write
+/image-based-video-search/README.md               @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard @rohitkatakol  @open-edge-platform/open-edge-platform-docs-write
+/interactive-digital-avatar/                      @senhui2intel @Junyu-B @wzq112358 @myqi @xwu2intel
+/interactive-digital-avatar/docs/                 @senhui2intel @Junyu-B @wzq112358 @myqi @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/interactive-digital-avatar/README.md             @senhui2intel @Junyu-B @wzq112358 @myqi @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/live-video-analysis/                             @bharagha @yogeshmpandey  @hteeyeoh
+/live-video-analysis/**/docs/                     @bharagha @yogeshmpandey  @hteeyeoh  @open-edge-platform/open-edge-platform-docs-write
+/live-video-analysis/**/README.md                 @bharagha @yogeshmpandey  @hteeyeoh  @open-edge-platform/open-edge-platform-docs-write
+# /metro-sdk-manager/                             no codeowners, the top codeowners apply
+/metro-sdk-manager/docs/user-guide/                         @vagheshp @rranjan3 @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/metro-sdk-manager/docs/oep-sdk-manager-files/config.js     @vagheshp @rranjan3 @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/docs/                           @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/README.md                       @rrajore @vagheshp @xwu2intel @ajagadi1 @ArokiEdgard  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/loitering-detection/            @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak
+/metro-vision-ai-app-recipe/loitering-detection/docs/       @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/loitering-detection/README.md   @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-intersection/             @rrajore @vagheshp @xwu2intel @ajagadi1 @saratpoluri @sarthakdeva-intel @sajeevrajput
+/metro-vision-ai-app-recipe/smart-intersection/docs/        @rrajore @vagheshp @xwu2intel @ajagadi1 @saratpoluri @sarthakdeva-intel @sajeevrajput  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-intersection/README.md    @rrajore @vagheshp @xwu2intel @ajagadi1 @saratpoluri @sarthakdeva-intel @sajeevrajput  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-parking/                  @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak
+/metro-vision-ai-app-recipe/smart-parking/docs/             @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-parking/README.md         @rrajore @vagheshp @xwu2intel @ajagadi1 @tjanczak  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-tolling/                  @rrajore @vagheshp @xwu2intel @ajagadi1
+/metro-vision-ai-app-recipe/smart-tolling/docs/             @rrajore @vagheshp @xwu2intel @ajagadi1  @open-edge-platform/open-edge-platform-docs-write
+/metro-vision-ai-app-recipe/smart-tolling/README.md         @rrajore @vagheshp @xwu2intel @ajagadi1  @open-edge-platform/open-edge-platform-docs-write
+/prompt-library/                                            @rrajore @vagheshp @xwu2intel
+/prompt-library/docs/                                       @rrajore @vagheshp @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/prompt-library/README.md                                   @rrajore @vagheshp @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/sensor-fusion-for-traffic-management/                                  @lijiunderstand @chaofanchen-intel @thegreatchaos @xwu2intel
+/sensor-fusion-for-traffic-management/docs/                             @lijiunderstand @chaofanchen-intel @thegreatchaos @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/sensor-fusion-for-traffic-management/README.md                         @lijiunderstand @chaofanchen-intel @thegreatchaos @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/sensor-fusion-for-traffic-management/intermediate-fusion/README.md     @lijiunderstand @chaofanchen-intel @thegreatchaos @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/sensor-fusion-for-traffic-management/post-fusion/README.md             @lijiunderstand @chaofanchen-intel @thegreatchaos @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/smart-nvr/                                              @bharagha @yogeshmpandey @bhardwaj-nakul @xwu2intel
+/smart-nvr/docs/                                         @bharagha @yogeshmpandey @bhardwaj-nakul @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/smart-nvr/README.md                                     @bharagha @yogeshmpandey @bhardwaj-nakul @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/smart-route-planning-agent/                             @bharagha @yogeshmpandey @madhuri-rai07 @krish918
+/smart-route-planning-agent/docs/                        @bharagha @yogeshmpandey @madhuri-rai07 @krish918  @open-edge-platform/open-edge-platform-docs-write
+/smart-route-planning-agent/README.md                    @bharagha @yogeshmpandey @madhuri-rai07 @krish918  @open-edge-platform/open-edge-platform-docs-write
+/smart-traffic-intersection-agent/                       @bharagha @yogeshmpandey @madhuri-rai07 @krish918
+/smart-traffic-intersection-agent/docs/                  @bharagha @yogeshmpandey @madhuri-rai07 @krish918  @open-edge-platform/open-edge-platform-docs-write
+/smart-traffic-intersection-agent/README.md              @bharagha @yogeshmpandey @madhuri-rai07 @krish918  @open-edge-platform/open-edge-platform-docs-write
+/video-processing-for-nvr/                        @zhangcong2019 @llin60 @Johere @xwu2intel
+/video-processing-for-nvr/docs/                   @zhangcong2019 @llin60 @Johere @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/video-processing-for-nvr/README.md               @zhangcong2019 @llin60 @Johere @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/visual-search-question-and-answering/            @zhangcong2019 @llin60 @Johere @xwu2intel
+/visual-search-question-and-answering/docs/       @zhangcong2019 @llin60 @Johere @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/visual-search-question-and-answering/README.md   @zhangcong2019 @llin60 @Johere @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/agentic-smart-community/            @Johere @lijiunderstand @llin60 @xwu2intel
+/agentic-smart-community/docs/       @Johere @lijiunderstand @llin60 @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/agentic-smart-community/README.md   @Johere @lijiunderstand @llin60 @xwu2intel  @open-edge-platform/open-edge-platform-docs-write
+/enterprise-data-intelligence/            @Yongbozzz @myqi @llin60 @xwu2intel
+/enterprise-data-intelligence/docs/       @Yongbozzz @myqi @llin60 @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/enterprise-data-intelligence/README.md   @Yongbozzz @myqi @llin60 @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+/vms-adapter-plugin/                              @sajeevrajput @rrajore @bharagha @yogeshmpandey @ArokiEdgard
+/vms-adapter-plugin/docs/                         @sajeevrajput @rrajore @bharagha @yogeshmpandey @ArokiEdgard @open-edge-platform/open-edge-platform-docs-write
+/vms-adapter-plugin/README.md                     @sajeevrajput @rrajore @bharagha @yogeshmpandey @ArokiEdgard @open-edge-platform/open-edge-platform-docs-write
+LICENSE            @xwu2intel
+CONTRIBUTING.md    @xwu2intel @open-edge-platform/open-edge-platform-docs-write
+CODE_OF_CONDUCT.md @xwu2intel
+SECURITY.md        @xwu2intel
+README.md          @xwu2intel @open-edge-platform/open-edge-platform-docs-write

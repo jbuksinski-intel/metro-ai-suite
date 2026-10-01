@@ -1,0 +1,181 @@
+
+---
+# SPDX-FileCopyrightText: (C) 2025 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+name: "[TFCC] SDLe Scans - Scan Trivy Bandit Coverity"
+run-name: "[TFCC] SDLe Scans - SScan Trivy Bandit Coverity"
+
+
+# Only run at most 1 workflow concurrently per PR, unlimited for branches
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 0"  # 2 a.m. on Sunday
+permissions:
+  contents: read
+  
+jobs:
+  bandit-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8edcb1bdb4e267140fa742c62e395cd74f332709
+        with:
+          persist-credentials: false
+          
+      - name: Run Bandit Scan
+        uses: open-edge-platform/orch-ci/.github/actions/security/bandit@27276444a9bcf247a27369406686b689933bd1ff
+        id: bandit
+        with:
+          scan-scope: "all"  
+          output-format: "txt" 
+          fail-on-findings: "false" 
+          
+      - name: Upload Report
+        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8
+        with:
+          name: bandit-report
+          path: security-results/bandit*
+
+  trivy-scan:
+    runs-on: ubuntu-24.04-16core-64GB
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@8edcb1bdb4e267140fa742c62e395cd74f332709
+        with:
+          persist-credentials: false
+
+      - name: Build Docker images
+        run: |
+          ls
+          cd metro-ai-suite/sensor-fusion-for-traffic-management/docker
+          bash build_docker.sh
+          TFCC_IMAGE_ID=$(docker images -q tfcc)
+          docker images --format '{{.ID}} {{.Repository}}' | \
+            awk -v keep="$TFCC_IMAGE_ID" '$1 != keep {print $1}' | \
+            xargs --no-run-if-empty docker rmi -f
+          docker system prune -f
+          
+      - name: Verify Docker image
+        run: |
+          echo "=== Built Docker Image ==="
+          docker images
+          ls
+          echo "=== Image Build Verification Complete ==="
+          
+      - name: Run Trivy Filesystem Scan
+        uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
+        id: trivy-fs
+        with:
+          scan_type: "fs"  
+          scan-scope: "all"  
+          severity: "HIGH,CRITICAL" 
+          format: "json"
+          scan_target: "metro-ai-suite/sensor-fusion-for-traffic-management/"
+          report_suffix: "-fs-tfcc-CT7"
+
+
+      - name: Run trivy Scan - tfcc (HTML Report)
+        uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
+        id: tfcc-html
+        with:
+          scan_type: "image"  
+          scan-scope: "all"
+          scan_target: "tfcc:latest"  
+          severity: "HIGH,CRITICAL"  
+          format: "table"
+          report_suffix: "-image-tfcc-html-CT248"
+          generate_sbom: "false"
+
+      - name: Run trivy Scan - tfcc (SPDX SBOM)
+        uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
+        id: tfcc-spdx
+        with:
+          scan_type: "image"  
+          scan-scope: "all"
+          scan_target: "tfcc:latest"  
+          severity: "HIGH,CRITICAL"  
+          format: "spdx-json"
+          scanners: "vuln"
+          report_suffix: "-image-tfcc-spdx-CT248"
+          generate_sbom: "false"
+
+      - name: Scan Dockerfile with Trivy
+        uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
+        with:
+          scan_type: "config"
+          scan_target: "metro-ai-suite/sensor-fusion-for-traffic-management/docker/"
+          severity: "HIGH,CRITICAL"
+          format: "json"
+          misconfig_scanners: "dockerfile"
+          report_suffix: "-config-tfcc-CT222"
+
+      - name: Upload Report
+        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8
+        with:
+          name: trivy-report-tfcc
+          path: security-results/trivy*
+
+  coverity-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Free disk space
+        run: curl -fsSL https://raw.githubusercontent.com/kou/arrow/e49d8ae15583ceff03237571569099a6ad62be32/ci/scripts/util_free_space.sh | bash
+        
+      - name: Check out edge-ai-libraries repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false   
+          
+      - name: Build code manually for TFCC
+        run: |
+          ls
+          sudo apt update
+          sudo apt install -y libunwind-dev
+          sudo apt-get install -y make automake libtool flex bison g++
+          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          bash scan_install_project_related_libs.sh
+          export PROJ_DIR=$PWD
+          sudo ln -s $PROJ_DIR/ai_inference/deployment/datasets /opt/datasets
+          sudo ln -s $PROJ_DIR/ai_inference/deployment/models /opt/models
+          sudo cp $PROJ_DIR/ai_inference/deployment/datasets/radarResults.csv /opt
+
+      - name: Build with Coverity Analysis
+        run: |
+          wget --quiet https://scan.coverity.com/download/linux64 \
+            --post-data "token=${{ secrets.TFCC_COVERITY_TOKEN }}&project=${{ secrets.TFCC_COVERITY_PROJECT }}" \
+            -O coverity_tool.tgz
+          mkdir cov-analysis
+          tar xzf coverity_tool.tgz --strip-components=1 -C cov-analysis
+          COV_PATH="$(pwd)/cov-analysis/bin"  
+          ls
+          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          $COV_PATH/cov-build --dir cov-int bash -x build.sh
+
+      - name: Create tarball for upload
+        run: |
+          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          tar -czvf coverity_output.tgz -C . cov-int
+          # Verify tarball contents
+          echo "=== Tarball Contents ==="
+          tar tzvf coverity_output.tgz
+          echo "=== head ==="
+          tar -tzvf coverity_output.tgz | head
+          
+      - name: Upload to Coverity Scan
+        run: |
+          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          curl --form token=${{ secrets.TFCC_COVERITY_TOKEN }} \
+               --form email=${{ secrets.TFCC_COVERITY_EMAIL }} \
+               --form file=@coverity_output.tgz \
+               --form version="`date +%Y%m%d%H%M%S`" \
+               --form description="GitHub Action upload" \
+               https://scan.coverity.com/builds?project=${{ secrets.TFCC_COVERITY_PROJECT }}
