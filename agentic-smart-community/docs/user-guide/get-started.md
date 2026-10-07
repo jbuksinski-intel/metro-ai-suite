@@ -45,8 +45,8 @@ The **first startup takes about 30 minutes** while the weights are downloaded an
 Clone the repository and change to `agentic-smart-community`:
 
 ```bash
-git clone https://github.com/open-edge-platform/edge-ai-suites ~/edge-ai-suites -b main
-cd ~/edge-ai-suites/metro-ai-suite/agentic-smart-community
+git clone https://github.com/open-edge-platform/metro-ai-suite.git ~/metro-ai-suite -b main
+cd ~/metro-ai-suite/agentic-smart-community
 ```
 
 ### Step 1 - Start all services
@@ -174,7 +174,7 @@ Open `http://localhost:3100/` to use the Agentic Smart Community Web UI. It prov
 
    ```bash
    mkdir -p ~/.openclaw/skills
-   cp -rf ~/edge-ai-suites/metro-ai-suite/agentic-smart-community/skills/* ~/.openclaw/skills/
+  cp -rf ~/metro-ai-suite/agentic-smart-community/skills/* ~/.openclaw/skills/
    openclaw gateway restart
    ```
 
@@ -255,7 +255,7 @@ Ask the agent to delete the monitor registered in the previous step:
 MCP Server subscriptions can deliver alert updates directly to connected clients. To enable real-time notifications through the OpenClaw adapter:
 - First, install the adapter as the `smart-community-alerts` OpenClaw plugin:
   ```bash
-  cd ~/edge-ai-suites/metro-ai-suite/agentic-smart-community
+  cd ~/metro-ai-suite/agentic-smart-community
   bash packages/framework-adapter-sdk/examples/openclaw/scripts/install_as_openclaw_plugin.sh
   ```
 - Then, ask the agent to configure real-time alert notifications:
