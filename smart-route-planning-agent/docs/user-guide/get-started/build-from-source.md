@@ -9,7 +9,7 @@ To build the Docker image of the Smart Route Planning Agent:
 1. Ensure you are in src directory of the project:
 
      ```bash
-     cd edge-ai-suites/metro-ai-suite/smart-route-planning-agent/src
+     cd metro-ai-suite/smart-route-planning-agent/src
      ```
 
 2. Run the following command:

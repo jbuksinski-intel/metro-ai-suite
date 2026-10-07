@@ -88,7 +88,7 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
 Navigate to the chart directory:
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/smart-traffic-intersection-agent/chart
+cd metro-ai-suite/smart-traffic-intersection-agent/chart
 ```
 
 #### Step 3: Build Chart Dependencies

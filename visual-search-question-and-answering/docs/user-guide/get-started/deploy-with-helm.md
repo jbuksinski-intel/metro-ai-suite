@@ -50,7 +50,7 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
 Navigate to the chart directory
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/visual-search-question-and-answering/deployment/helm-chart
+cd metro-ai-suite/visual-search-question-and-answering/deployment/helm-chart
 ```
 
 ### Step 2: Configure the `values.yaml` File

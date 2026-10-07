@@ -91,7 +91,7 @@ Before you can deploy with Helm, you must clone the repository and download the 
 git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
 
 # Navigate to the Metro AI Suite directory
-cd edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/
+cd metro-ai-suite/metro-vision-ai-app-recipe/
 
 ```
 
@@ -99,7 +99,7 @@ Optional: Pull the Helm chart and replace the existing `helm-chart` folder with 
 
 > [!NOTE]
 > The Helm chart should be downloaded when you are not using the Helm chart provided
-> in `edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/smart-parking/helm-chart`.
+> in `metro-ai-suite/metro-vision-ai-app-recipe/smart-parking/helm-chart`.
 
 ```bash
 #Navigate to Smart Parking directory

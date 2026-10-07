@@ -23,7 +23,7 @@ This guide explains a simple Helm deployment for Smart Route Planning Agent.
 
 ```bash
 git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
-cd edge-ai-suites/metro-ai-suite/smart-route-planning-agent/chart
+cd metro-ai-suite/smart-route-planning-agent/chart
 ```
 
 #### Option B: From Public Registry

@@ -37,7 +37,7 @@ tests
 To run sanity test cases for Industrial Edge Insights Vision, use the following command:
 
 ```sh
-cd edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/test-suite/robot_files
+cd metro-ai-suite/metro-vision-ai-app-recipe/test-suite/robot_files
 robot test.robot
 ```
 

@@ -30,7 +30,7 @@ Deploy these on separate devices:
 
 Required only when enabling AI-powered event descriptions (`NVR_GENAI=true`):
 
-- Runs the VLM model defined in the Frigate [config file](https://github.com/open-edge-platform/edge-ai-suites/blob/main/metro-ai-suite/smart-nvr/resources/frigate-config/config.yml)
+- Runs the VLM model defined in the Frigate [config file](https://github.com/open-edge-platform/metro-ai-suite/blob/main/smart-nvr/resources/frigate-config/config.yml)
 - Use `VLM_MAX_COMPLETION_TOKENS` to limit response length during deployment
 
 [VLM Serving Documentation](https://github.com/open-edge-platform/edge-ai-libraries/blob/release-2026.2.0/microservices/vlm-openvino-serving/docs/user-guide/get-started.md)
@@ -88,7 +88,7 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
 Navigate to the chart directory:
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/smart-nvr
+cd metro-ai-suite/smart-nvr
 ```
 
 ### 2. Configure Required Values
