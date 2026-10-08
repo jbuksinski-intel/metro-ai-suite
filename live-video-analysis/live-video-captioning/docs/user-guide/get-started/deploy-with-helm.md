@@ -104,7 +104,7 @@ Clone the repository containing the charts files:
 
 ```bash
 # Clone the mainline branch
-git clone https://github.com/open-edge-platform/edge-ai-suites.git edge-ai-suites -b main
+git clone https://github.com/open-edge-platform/metro-ai-suite.git -b main
 ```
 
 ##### Step 2: Navigate to the chart directory
@@ -112,7 +112,7 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git edge-ai-suite
 Navigate to the chart directory:
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/live-video-analysis/live-video-captioning/charts
+cd metro-ai-suite/live-video-analysis/live-video-captioning/charts
 ```
 
 ### Select the target node
