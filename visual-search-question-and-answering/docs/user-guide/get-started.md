@@ -23,6 +23,7 @@ To learn more on partial cloning, check the [Repository Cloning guide](https://d
 git clone --filter=blob:none --sparse --branch main https://github.com/open-edge-platform/edge-ai-suites.git
 cd edge-ai-suites
 git sparse-checkout set metro-ai-suite
+cd metro-ai-suite
 ```
 
 Run the commands to build images for the microservices:

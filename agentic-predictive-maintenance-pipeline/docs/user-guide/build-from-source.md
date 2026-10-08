@@ -22,7 +22,6 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git
 cd edge-ai-suites/metro-ai-suite/agentic-predictive-maintenance-pipeline
 ```
 
-
 ### 2. Configure the Build
 
 Set the registry URL and tag for the images you want to build. If you leave `REGISTRY` empty, the images will be built and tagged locally.
