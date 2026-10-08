@@ -88,11 +88,10 @@ Before you can deploy with Helm, you must clone the repository and download the 
 
 ```bash
 # Clone the repository
-git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
+git clone --branch main https://github.com/open-edge-platform/metro-ai-suite.git
 
 # Navigate to the Metro AI Suite directory
 cd metro-ai-suite/metro-vision-ai-app-recipe/
-
 ```
 
 Optional: Pull the Helm chart and replace the existing `helm-chart` folder with it.
