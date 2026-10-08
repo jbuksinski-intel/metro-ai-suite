@@ -107,8 +107,6 @@ Update or edit the values in YAML file as follows:
 | `global.proxy.https_proxy` | HTTPS proxy if required | `http://proxy-example.com:000` |
 | `frigate.env.FRIGATE_MQTT_USER` | User name for mqtt | `<your-mqtt-username>` |
 | `frigate.env.FRIGATE_MQTT_PASSWORD` | Password for mqtt | `<your-mqtt-password>` |
-| `frigate.env.OPENAI_BASE_URL` | Needed when NVR_GENAI flag is set to true | `<your-open-ai-base-url>` |
-| `frigate.env.OPENAI_API_KEY` | Needed when NVR_GENAI flag is set to true | `<your-open-ai-api-key>` |
 | `nvr-event-router.env.VSS_SEARCH_IP` | VSS Search IP | `http://<your-vss-search-ip>` |
 | `nvr-event-router.env.VSS_SEARCH_PORT` | VSS Search port | `<your-vss-search-port>` |
 | `nvr-event-router.env.VSS_SUMMARY_IP` | VSS summary IP | `http://<your-vss-summary-ip>` |
@@ -116,7 +114,6 @@ Update or edit the values in YAML file as follows:
 | `nvr-event-router.env.WATCH_BATCH_SIZE` | Maximum videos in each continuous-ingestion embedding job | `10` |
 | `nvr-event-router.env.BATCH_JOB_POLL_INTERVAL_SECONDS` | Seconds between embedding-job status checks | `0.5` |
 | `nvr-event-router.env.BATCH_JOB_TIMEOUT_SECONDS` | Maximum seconds to wait for an embedding job | `3600` |
-| `nvr-event-router-ui.NVR_GENAI` | Flag to enable GENAI on Frigate NVR | `true/false` |
 
 ### 3. Build Helm Dependencies
 
