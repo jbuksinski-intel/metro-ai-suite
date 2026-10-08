@@ -104,7 +104,7 @@ Clone the repository containing the charts files:
 
 ```bash
 # Clone the mainline branch
-git clone --branch main https://github.com/open-edge-platform/metro-ai-suite.git metro-ai-suite
+git clone https://github.com/open-edge-platform/edge-ai-suites.git edge-ai-suites -b main
 ```
 
 ##### Step 2: Navigate to the chart directory

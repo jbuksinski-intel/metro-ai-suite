@@ -128,13 +128,13 @@ To set up the integrated deployment, obtain the chart and install it with your e
 
    ```bash
    # Clone the mainline branch
-   git clone --branch main https://github.com/open-edge-platform/metro-ai-suite.git metro-ai-suite
+   git clone https://github.com/open-edge-platform/edge-ai-suites.git edge-ai-suites -b main
    ```
 
 2. Navigate to the chart directory.
 
    ```bash
-   cd metro-ai-suite/live-video-analysis/live-video-captioning-rag/charts
+   cd edge-ai-suites/metro-ai-suite/live-video-analysis/live-video-captioning-rag/charts
    ```
 
 ### Select the target node

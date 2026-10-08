@@ -51,8 +51,8 @@ Before You Begin, ensure the following:
    - Clone the repo and go to helm directory
 
      ```bash
-     git clone https://github.com/open-edge-platform/metro-ai-suite.git -b main
-     cd metro-ai-suite/image-based-video-search/chart
+     git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
+     cd edge-ai-suites/metro-ai-suite/image-based-video-search/chart
      ```
 
 2. **Start the application**:
