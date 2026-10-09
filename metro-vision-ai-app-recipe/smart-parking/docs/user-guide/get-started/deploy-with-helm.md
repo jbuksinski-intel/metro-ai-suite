@@ -99,7 +99,7 @@ Optional: Pull the Helm chart and replace the existing `helm-chart` folder with 
 
 > [!NOTE]
 > The Helm chart should be downloaded when you are not using the Helm chart provided
-> in `edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/smart-parking/helm-chart`.
+> in `metro-ai-suite/metro-vision-ai-app-recipe/smart-parking/helm-chart`.
 
 ```bash
 #Navigate to Smart Parking directory

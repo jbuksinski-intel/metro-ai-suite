@@ -28,6 +28,7 @@ This guide covers the rapid deployment of the Live Video Alert Agent system usin
    cd live-video-analysis/live-video-alert-agent
    ```
 
+
 3. Configure the image registry and tag variables:
 
    ```bash

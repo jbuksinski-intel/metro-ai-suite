@@ -106,7 +106,7 @@ folder (e.g., [Get Started for Loitering Detection](../get-started.md)).
 2.  **Navigate to Script Directory:** Open a terminal and navigate to the `metro-vision-ai-app-recipe` directory.
 
     ```bash
-    cd edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/
+    cd metro-ai-suite/metro-vision-ai-app-recipe/
     ```
 
 3.  **Stop Existing Pipelines:** Ensure no other pipelines are running before you start the

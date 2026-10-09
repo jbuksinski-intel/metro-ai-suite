@@ -136,7 +136,7 @@ Other supporting services such as `mqtt-broker` do not require pinning to the sa
 
 For best performance, choose a worker node with a GPU. The chart can run with CPU-only inference, but a GPU-capable node is the preferred deployment target for DL Streamer and real-time media processing.
 
-In [values-override.yaml](https://github.com/open-edge-platform/edge-ai-suites/blob/main/metro-ai-suite/live-video-analysis/live-video-captioning/charts/values-override.yaml), set `global.nodeName` to specify the target Kubernetes node. This value references the built-in `kubernetes.io/hostname` label and requires no additional node labeling permissions.
+In [values-override.yaml](https://github.com/open-edge-platform/metro-ai-suite/blob/main/live-video-analysis/live-video-captioning/charts/values-override.yaml), set `global.nodeName` to specify the target Kubernetes node. This value references the built-in `kubernetes.io/hostname` label and requires no additional node labeling permissions.
 
 Ensure you use the same node name as specified in your model-download chart deployment.
 

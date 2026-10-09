@@ -69,7 +69,7 @@ Follow these steps to run the tests:
    Change to the project root directory (where `pytest.ini` is located):
 
    ```bash
-   cd /path/to/edge-ai-suites/metro-ai-suite/smart-traffic-intersection-agent
+   cd /path/to/metro-ai-suite/smart-traffic-intersection-agent
    ```
 
 5. **Run the Tests**

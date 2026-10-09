@@ -28,7 +28,7 @@ cloud-dependent deployments are not feasible.
 **Objective**: Create a complete offline deployment package containing all necessary components for the Loitering Detection application.
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/loitering-detection
+cd metro-ai-suite/metro-vision-ai-app-recipe/loitering-detection
 
 ./offline-package-generator.sh
 ```

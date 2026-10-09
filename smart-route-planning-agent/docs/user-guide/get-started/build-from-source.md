@@ -8,9 +8,9 @@ This section shows how to build the Smart Route Planning Agent from source and r
 
 1. Set the reasoning AI model to be used:
 
-    ```bash
-    export REASONING_MODEL_NAME=<model-name>    # e.g. OpenVINO/Qwen3.6-35B-A3B-int4-ov, OpenVINO/Qwen3.5-9B-int8-ov, OpenVINO/Qwen2.5-14B-Instruct-int4-ov
-    ```
+     ```bash
+     cd metro-ai-suite/smart-route-planning-agent/src
+     ```
 
 2. _**(Optional)**_ Set tag for the image to be built:
 

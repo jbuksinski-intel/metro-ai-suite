@@ -31,7 +31,7 @@ By following this guide, you will learn how to:
 
    > [!NOTE]
    > The below step is required for deployment with certain pre-release images
-   > - Update `DOCKER_REGISTRY` variable in `.env` file present at `edge-ai-suites/metro-ai-suite/image-based-video-search/`. The recommended setting to use pre-release images is: `DOCKER_REGISTRY=docker.io/`
+   > - Update `DOCKER_REGISTRY` variable in `.env` file present at `metro-ai-suite/image-based-video-search/`. The recommended setting to use pre-release images is: `DOCKER_REGISTRY=docker.io/`
    > Please remember to include `/` at the end.
 
 2. **Build from Source (Optional)**:
@@ -259,7 +259,7 @@ By following this guide, you will learn how to:
 
     - To use your own models instead of the default models, follow these steps:
 
-      - Open the `config.cpu.json` file present at the path `edge-ai-suites/metro-ai-suite/image-based-video-search/src/dlstreamer-pipeline-server/configs/filter-pipeline/`.
+      - Open the `config.cpu.json` file present at the path `metro-ai-suite/image-based-video-search/src/dlstreamer-pipeline-server/configs/filter-pipeline/`.
 
       - Change the paths in the `pipeline` section to point to your own models. Replace the paths for `gvadetect` and `gvaclassify` with the paths to your models:
 

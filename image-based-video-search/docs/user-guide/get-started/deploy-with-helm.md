@@ -24,7 +24,7 @@ Before You Begin, ensure the following:
 ## Pull the helm chart (Optional)
 
 > [!NOTE]
-> The helm chart should be downloaded when you are not using the helm chart provided in `edge-ai-suites/metro-ai-suite/image-based-video-search/chart`
+> The helm chart should be downloaded when you are not using the helm chart provided in `metro-ai-suite/image-based-video-search/chart`
 
 - Download helm chart with the following command
 

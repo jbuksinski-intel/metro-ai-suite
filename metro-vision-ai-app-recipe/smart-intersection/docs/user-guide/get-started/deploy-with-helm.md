@@ -101,7 +101,7 @@ cd metro-ai-suite/metro-vision-ai-app-recipe/
 
 > [!NOTE]
 > The helm chart should be downloaded when you are not using the helm chart
-> provided in `edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/smart-intersection/chart`
+> provided in `metro-ai-suite/metro-vision-ai-app-recipe/smart-intersection/chart`
 
 ```bash
 # Navigate to Smart Intersection directory
