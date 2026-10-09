@@ -80,7 +80,7 @@ cd smart-nvr
 Clone the repository containing the Helm chart:
 
 ```bash
-git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
+git clone https://github.com/open-edge-platform/metro-ai-suite.git -b main
 ```
 
 ##### Step 2: Change to the Chart Directory
@@ -88,7 +88,7 @@ git clone https://github.com/open-edge-platform/edge-ai-suites.git -b main
 Navigate to the chart directory:
 
 ```bash
-cd edge-ai-suites/metro-ai-suite/smart-nvr
+cd metro-ai-suite/smart-nvr
 ```
 
 ### 2. Configure Required Values
