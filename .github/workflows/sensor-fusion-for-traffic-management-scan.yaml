@@ -54,7 +54,7 @@ jobs:
       - name: Build Docker images
         run: |
           ls
-          cd metro-ai-suite/sensor-fusion-for-traffic-management/docker
+          cd sensor-fusion-for-traffic-management/docker
           bash build_docker.sh
           TFCC_IMAGE_ID=$(docker images -q tfcc)
           docker images --format '{{.ID}} {{.Repository}}' | \
@@ -77,7 +77,7 @@ jobs:
           scan-scope: "all"  
           severity: "HIGH,CRITICAL" 
           format: "json"
-          scan_target: "metro-ai-suite/sensor-fusion-for-traffic-management/"
+          scan_target: "sensor-fusion-for-traffic-management/"
           report_suffix: "-fs-tfcc-CT7"
 
 
@@ -110,7 +110,7 @@ jobs:
         uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
         with:
           scan_type: "config"
-          scan_target: "metro-ai-suite/sensor-fusion-for-traffic-management/docker/"
+          scan_target: "sensor-fusion-for-traffic-management/docker/"
           severity: "HIGH,CRITICAL"
           format: "json"
           misconfig_scanners: "dockerfile"
@@ -141,7 +141,7 @@ jobs:
           sudo apt update
           sudo apt install -y libunwind-dev
           sudo apt-get install -y make automake libtool flex bison g++
-          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          cd sensor-fusion-for-traffic-management
           bash scan_install_project_related_libs.sh
           export PROJ_DIR=$PWD
           sudo ln -s $PROJ_DIR/ai_inference/deployment/datasets /opt/datasets
@@ -157,12 +157,12 @@ jobs:
           tar xzf coverity_tool.tgz --strip-components=1 -C cov-analysis
           COV_PATH="$(pwd)/cov-analysis/bin"  
           ls
-          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          cd sensor-fusion-for-traffic-management
           $COV_PATH/cov-build --dir cov-int bash -x build.sh
 
       - name: Create tarball for upload
         run: |
-          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          cd sensor-fusion-for-traffic-management
           tar -czvf coverity_output.tgz -C . cov-int
           # Verify tarball contents
           echo "=== Tarball Contents ==="
@@ -172,7 +172,7 @@ jobs:
           
       - name: Upload to Coverity Scan
         run: |
-          cd metro-ai-suite/sensor-fusion-for-traffic-management
+          cd sensor-fusion-for-traffic-management
           curl --form token=${{ secrets.TFCC_COVERITY_TOKEN }} \
                --form email=${{ secrets.TFCC_COVERITY_EMAIL }} \
                --form file=@coverity_output.tgz \

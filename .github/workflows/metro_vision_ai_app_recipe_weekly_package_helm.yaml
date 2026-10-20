@@ -40,7 +40,7 @@ jobs:
       env:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
-        cd edge-ai-suites-repo/metro-ai-suite/metro-vision-ai-app-recipe
+        cd edge-ai-suites-repo/metro-vision-ai-app-recipe
 
         # Packaging Smart Parking
         helm package ./smart-parking/helm-chart/ --version "$HELM_CHART_TAG" --app-version "$HELM_CHART_TAG"
@@ -53,7 +53,7 @@ jobs:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
         
-        for CHART_PACKAGE in edge-ai-suites-repo/metro-ai-suite/metro-vision-ai-app-recipe/*-"$HELM_CHART_TAG".tgz; do
+        for CHART_PACKAGE in edge-ai-suites-repo/metro-vision-ai-app-recipe/*-"$HELM_CHART_TAG".tgz; do
             helm push "$CHART_PACKAGE" oci://ghcr.io/${{ github.repository }}/metro-ai-suite-vision-helm-chart
         done
         
@@ -65,7 +65,7 @@ jobs:
         echo "- Registry: \`oci://ghcr.io/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
         echo "- Version: \`$HELM_CHART_TAG\`" >> $GITHUB_STEP_SUMMARY
         echo "### Helm Pull Commands" >> $GITHUB_STEP_SUMMARY
-        for CHART_PACKAGE in edge-ai-suites-repo/metro-ai-suite/metro-vision-ai-app-recipe/*-"$HELM_CHART_TAG".tgz; do
+        for CHART_PACKAGE in edge-ai-suites-repo/metro-vision-ai-app-recipe/*-"$HELM_CHART_TAG".tgz; do
             # Extract the chart name from the .tgz file
             CHART_NAME=$(basename "$CHART_PACKAGE" -"$HELM_CHART_TAG".tgz)
             # Append the pull command to GitHub summary

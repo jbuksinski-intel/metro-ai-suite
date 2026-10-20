@@ -40,13 +40,13 @@ jobs:
       env:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
-        cd edge-ai-suites-repo/metro-ai-suite/image-based-video-search/chart
+        cd edge-ai-suites-repo/image-based-video-search/chart
         helm package . --version "$HELM_CHART_TAG" --app-version "$HELM_CHART_TAG"
     - name: Push to GHCR
       env:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
-        CHART_PACKAGE=$(ls edge-ai-suites-repo/metro-ai-suite/image-based-video-search/chart/*-"$HELM_CHART_TAG".tgz)
+        CHART_PACKAGE=$(ls edge-ai-suites-repo/image-based-video-search/chart/*-"$HELM_CHART_TAG".tgz)
         helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/metro-ai-suites/
         
     - name: Update Github Summary

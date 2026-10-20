@@ -16,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - 'metro-ai-suite/smart-nvr/**'
+      - 'smart-nvr/**'
 
 jobs:   
 
@@ -36,12 +36,12 @@ jobs:
           scan-scope: "all"  
           severity: "HIGH,CRITICAL" 
           format: "json"
-          scan_target: "metro-ai-suite/smart-nvr/"
+          scan_target: "smart-nvr/"
           report_suffix: "-CT7"
       
       - name: Build Docker images
         run: |
-          cd metro-ai-suite/smart-nvr/
+          cd smart-nvr/
           docker build -t nvr-event-router:latest -f docker/Dockerfile .
          
       - name: Run trivy Scan - nvr-event-router
@@ -59,7 +59,7 @@ jobs:
         uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
         with:
           scan_type: "config"
-          scan_target: "edge-ai-suites-repo/metro-ai-suite/smart-nvr/docker"
+          scan_target: "smart-nvr/docker"
           severity: "HIGH,CRITICAL"
           format: "json"
           misconfig_scanners: "Dockerfile"
@@ -87,7 +87,7 @@ jobs:
           scan-scope: "all"  
           output-format: "txt" 
           fail-on-findings: "false"
-          paths: "metro-ai-suite/smart-nvr/"
+          paths: "smart-nvr/"
           report_suffix: "-CT161"
           
       - name: Upload Report
@@ -113,7 +113,7 @@ jobs:
           scan-scope: "all"  
           output-format: "txt" 
           fail-on-findings: "false"
-          paths: "metro-ai-suite/smart-nvr/"
+          paths: "smart-nvr/"
           exclude_dirs: ".git,node_modules,venv,ui/test"
           
       - name: Upload Report
@@ -151,7 +151,7 @@ jobs:
           
       - name: Scan for secrets
         run: |
-          gitleaks dir "metro-ai-suite/smart-nvr/" -v -c ci/.gitleaks.toml --baseline-path ci/gitleaks_baselines/gitleaks-smart-nvr.json -r gitleaks-smart-nvr.json || true
+          gitleaks dir "smart-nvr/" -v -c ci/.gitleaks.toml --baseline-path ci/gitleaks_baselines/gitleaks-smart-nvr.json -r gitleaks-smart-nvr.json || true
           
       - name: Upload Gitleaks Report
         uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8
@@ -178,7 +178,7 @@ jobs:
         run: |
           pip install pylint uv==0.8.12
           # Resolve project runtime dependencies from the uv lockfile (replaces requirements.txt)
-          uv export --directory metro-ai-suite/smart-nvr --frozen --no-dev --format requirements-txt -o /tmp/smart-nvr-requirements.txt
+          uv export --directory smart-nvr --frozen --no-dev --format requirements-txt -o /tmp/smart-nvr-requirements.txt
           pip install -r /tmp/smart-nvr-requirements.txt || true
       
       - name: Run pylint
@@ -202,7 +202,7 @@ jobs:
           EOF
           
           # Find all Python files and lint them
-          find metro-ai-suite/smart-nvr/ -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} + >> security-results/pylint-report-smart-nvr.txt 2>&1 || true
+          find smart-nvr/ -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} + >> security-results/pylint-report-smart-nvr.txt 2>&1 || true
           
           echo "Pylint scan completed"
       
@@ -235,7 +235,7 @@ jobs:
           echo "" >> security-results/shellcheck-report-smart-nvr.txt
           
           # Find all shell scripts and check them
-          find metro-ai-suite/smart-nvr/ -type f \( -name "*.sh" -o -name "*.bash" \) -print0 | while IFS= read -r -d '' file; do
+          find smart-nvr/ -type f \( -name "*.sh" -o -name "*.bash" \) -print0 | while IFS= read -r -d '' file; do
             echo "Checking: $file" >> security-results/shellcheck-report-smart-nvr.txt
             shellcheck "$file" >> security-results/shellcheck-report-smart-nvr.txt 2>&1 || true
             echo "---" >> security-results/shellcheck-report-smart-nvr.txt
