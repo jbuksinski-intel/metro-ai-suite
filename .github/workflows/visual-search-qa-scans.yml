@@ -30,6 +30,7 @@ jobs:
       - name: Build Docker images
         run: |
           ls
+          cd metro-ai-suite
           docker build -t visual-search-qa-app:latest -f visual-search-question-and-answering/src/Dockerfile .
           
       - name: Verify Docker image
@@ -46,7 +47,7 @@ jobs:
           scan-scope: "all"  
           severity: "HIGH,CRITICAL" 
           format: "json"
-          scan_target: "visual-search-question-and-answering/"
+          scan_target: "metro-ai-suite/visual-search-question-and-answering/"
           report_suffix: "-fs-vsqa-CT7"
 
       - name: Run trivy Scan -vsqa (HTML Report)
@@ -78,7 +79,7 @@ jobs:
         uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
         with:
           scan_type: "config"
-          scan_target: "visual-search-question-and-answering/src/"
+          scan_target: "metro-ai-suite/visual-search-question-and-answering/src/"
           severity: "HIGH,CRITICAL"
           format: "json"
           misconfig_scanners: "dockerfile"
@@ -105,7 +106,7 @@ jobs:
           scan-scope: "all"  
           output-format: "txt" 
           fail-on-findings: "false"
-          paths: "visual-search-question-and-answering"
+          paths: "metro-ai-suite/visual-search-question-and-answering"
           report_suffix: "-bandit-visual-search-qa-CT161"
           
       - name: Upload Report
@@ -130,7 +131,7 @@ jobs:
           scan-scope: "all"  
           output-format: "txt" 
           fail-on-findings: "false"
-          paths: "visual-search-question-and-answering"
+          paths: "metro-ai-suite/visual-search-question-and-answering"
           exclude_dirs: ".git,tests,docs,.pytest_cache,__pycache__,.venv"
           
       - name: Upload Report
@@ -159,12 +160,12 @@ jobs:
           COV_PATH="$(pwd)/cov-analysis/bin"
           export PATH="$COV_PATH:$PATH"
           ls
-          cd visual-search-question-and-answering/src
+          cd metro-ai-suite/visual-search-question-and-answering/src
           coverity capture --dir cov-int --project-dir ./
           
       - name: Create tarball for upload
         run: |
-          cd visual-search-question-and-answering/src
+          cd metro-ai-suite/visual-search-question-and-answering/src
           tar -czvf coverity_output.tgz -C . cov-int
           # Verify tarball contents
           echo "=== Tarball Contents ==="
@@ -174,7 +175,7 @@ jobs:
           
       - name: Upload to Coverity Scan
         run: |
-          cd visual-search-question-and-answering/src
+          cd metro-ai-suite/visual-search-question-and-answering/src
           curl --form token=${{ secrets.VQA_COVERITY_TOKEN }} \
                --form email=${{ secrets.VQA_COVERITY_EMAIL }} \
                --form file=@coverity_output.tgz \

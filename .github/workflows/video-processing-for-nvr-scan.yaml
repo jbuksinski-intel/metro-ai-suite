@@ -37,6 +37,7 @@ jobs:
           sudo apt install intel-vppsdk
           sudo bash /opt/intel/vppsdk/install_vppsdk_dependencies.sh
           source /opt/intel/vppsdk/env.sh
+          cd metro-ai-suite
           cd video-processing-for-nvr/docker
           bash build_sample.sh
           
@@ -54,7 +55,7 @@ jobs:
           scan-scope: "all"  
           severity: "HIGH,CRITICAL" 
           format: "json"
-          scan_target: "video-processing-for-nvr/"
+          scan_target: "metro-ai-suite/video-processing-for-nvr/"
           report_suffix: "-fs-vpp-CT7"
 
 
@@ -87,7 +88,7 @@ jobs:
         uses: open-edge-platform/orch-ci/.github/actions/security/trivy@27276444a9bcf247a27369406686b689933bd1ff
         with:
           scan_type: "config"
-          scan_target: "video-processing-for-nvr/docker/"
+          scan_target: "metro-ai-suite/video-processing-for-nvr/docker/"
           severity: "HIGH,CRITICAL"
           format: "json"
           misconfig_scanners: "dockerfile"
@@ -113,7 +114,7 @@ jobs:
           
       - name: install live555
         run: |
-          cd video-processing-for-nvr
+          cd metro-ai-suite/video-processing-for-nvr
           bash live555_install.sh
           
       - name: Build code manually for VPP
@@ -136,12 +137,12 @@ jobs:
           mkdir cov-analysis
           tar xzf coverity_tool.tgz --strip-components=1 -C cov-analysis
           COV_PATH="$(pwd)/cov-analysis/bin"  
-          cd video-processing-for-nvr
+          cd metro-ai-suite/video-processing-for-nvr
           $COV_PATH/cov-build --dir cov-int bash build.sh
    
       - name: Create tarball for upload
         run: |
-          cd video-processing-for-nvr
+          cd metro-ai-suite/video-processing-for-nvr
           tar -czvf coverity_output.tgz -C . cov-int
           # Verify tarball contents
           echo "=== Tarball Contents ==="
@@ -151,7 +152,7 @@ jobs:
           
       - name: Upload to Coverity Scan
         run: |
-          cd video-processing-for-nvr
+          cd metro-ai-suite/video-processing-for-nvr
           curl --form token=${{ secrets.VPP_COVERITY_TOKEN }} \
                --form email=${{ secrets.VPP_COVERITY_EMAIL }} \
                --form file=@coverity_output.tgz \

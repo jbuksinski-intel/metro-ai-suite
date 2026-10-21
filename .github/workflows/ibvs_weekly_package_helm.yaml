@@ -20,10 +20,10 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-    - name: Check out metro-ai-suite repository
+    - name: Check out edge-ai-suites repository
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       with:
-        path: metro-ai-suite-repo
+        path: edge-ai-suites-repo
         persist-credentials: false
     - name: Install Helm
       uses: azure/setup-helm@fe7b79cd5ee1e45176fcad797de68ecaf3ca4814 #v4.2.0
@@ -40,13 +40,13 @@ jobs:
       env:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
-        cd metro-ai-suite-repo/image-based-video-search/chart
+        cd edge-ai-suites-repo/metro-ai-suite/image-based-video-search/chart
         helm package . --version "$HELM_CHART_TAG" --app-version "$HELM_CHART_TAG"
     - name: Push to GHCR
       env:
         HELM_CHART_TAG: ${{ inputs.helm-chart-tag }}
       run: |
-        CHART_PACKAGE=$(ls metro-ai-suite-repo/image-based-video-search/chart/*-"$HELM_CHART_TAG".tgz)
+        CHART_PACKAGE=$(ls edge-ai-suites-repo/metro-ai-suite/image-based-video-search/chart/*-"$HELM_CHART_TAG".tgz)
         helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/metro-ai-suites/
         
     - name: Update Github Summary
@@ -63,4 +63,4 @@ jobs:
     - name: Clean up
       if: always()
       run: |
-        rm -rf metro-ai-suite-repo
+        rm -rf edge-ai-suites-repo

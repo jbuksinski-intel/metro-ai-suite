@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
           submodules: false
-
+          
       - name: Run Virus Scan
         run: |
           mkdir -p reports
