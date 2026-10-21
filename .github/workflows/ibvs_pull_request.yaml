@@ -24,14 +24,14 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-    - name: Check out metro-ai-suites repository
+    - name: Check out metro-ai-suite repository
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       with:
         persist-credentials: false
-        path: metro-ai-suites-repo
+        path: metro-ai-suite-repo
     - name: Build
       run: |
-        cd metro-ai-suites-repo/image-based-video-search
+        cd metro-ai-suite-repo/image-based-video-search
         docker compose build --pull --no-cache
         docker compose up -d
         docker ps
@@ -79,7 +79,7 @@ jobs:
       shell: bash
       run: |
         pwd
-        cd metro-ai-suites-repo/image-based-video-search/
+        cd metro-ai-suite-repo/image-based-video-search/
         trivy --version
         which trivy
         trivy image --download-db-only
@@ -118,7 +118,7 @@ jobs:
 
     - name: Trivy Image Scans
       run: |
-        cd metro-ai-suites-repo/image-based-video-search
+        cd metro-ai-suite-repo/image-based-video-search
         mkdir -p ${{ github.workspace }}/reports/Trivy
         VERSION=$(grep "feature-matching:" compose.yml | awk -F: '{print $3}'| tr -d '[:space:]')
         trivy image intel/feature-matching:$VERSION  -s HIGH,CRITICAL --ignore-unfixed --format template --template "@trivy-html.tpl" -o trivy-image-scan-feature-matching-ignore-unfixed.html
@@ -140,12 +140,12 @@ jobs:
 
     - name: Trivy Config Scan
       run: |
-        cd metro-ai-suites-repo/image-based-video-search
+        cd metro-ai-suite-repo/image-based-video-search
         trivy config . -s HIGH,CRITICAL --format json -o trivy-config.json
     - name: Summarize Trivy config findings
       if: always()
       run: |
-        report="metro-ai-suites-repo/image-based-video-search/trivy-config.json"
+        report="metro-ai-suite-repo/image-based-video-search/trivy-config.json"
         table="reports/Trivy/trivy-config.txt"
         mkdir -p reports/Trivy
         echo "## Trivy Config Findings" >> "$GITHUB_STEP_SUMMARY"
@@ -169,7 +169,7 @@ jobs:
         cp "$report" reports/Trivy/trivy-config.json
     - name: Trivy FS Scan
       run: |
-        cd metro-ai-suites-repo/image-based-video-search
+        cd metro-ai-suite-repo/image-based-video-search
         trivy fs .  --format template --template "@trivy-html.tpl" -o "trivy-fs-full-report-code-scan.html"
         trivy fs --list-all-pkgs --format template --template "@csv.tpl" --output trivy-fs-full-report.csv .
         trivy fs -s HIGH,CRITICAL --ignore-unfixed . | tee trivy-fs-full-report-ignore-unfixed.txt
@@ -205,11 +205,11 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-    - name: Check out metro-ai-suites repository
+    - name: Check out metro-ai-suite repository
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       with:
         persist-credentials: false
-        path: metro-ai-suites-repo
+        path: metro-ai-suite-repo
 
     - name: Install ShellCheck
       run: |
@@ -218,7 +218,7 @@ jobs:
 
     - name: Run ShellCheck Scan
       run: |
-        cd metro-ai-suites-repo/image-based-video-search/
+        cd metro-ai-suite-repo/image-based-video-search/
         mkdir -p "$GITHUB_WORKSPACE/reports"
         find . -type f -name "*.sh" -print0 | xargs -0 -r shellcheck -f gcc > "$GITHUB_WORKSPACE/reports/shellcheck-report.txt" || true
         report="$GITHUB_WORKSPACE/reports/shellcheck-report.txt"
@@ -251,7 +251,7 @@ jobs:
       run: |
         mkdir -p reports
         docker pull clamav/clamav
-        docker run --rm -v "${{ github.workspace }}:/src" clamav/clamav clamscan -r  /src/metro-ai-suites-repo/image-based-video-search/ > ./reports/clamav-report.txt || true
+        docker run --rm -v "${{ github.workspace }}:/src" clamav/clamav clamscan -r  /src/metro-ai-suite-repo/image-based-video-search/ > ./reports/clamav-report.txt || true
         infected_count=$(awk '/ FOUND$/ { count++ } END { print count + 0 }' reports/clamav-report.txt)
         {
           echo "### Virus Scan Results"
@@ -273,8 +273,8 @@ jobs:
       run: |
         mkdir -p reports
         docker pull ghcr.io/pycqa/bandit/bandit
-        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/metro-ai-suites-repo/image-based-video-search/ -f txt -o /src/reports/bandit-report.txt || true >> $GITHUB_STEP_SUMMARY
-        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/metro-ai-suites-repo/image-based-video-search/ -f json -o /src/reports/bandit-report.json || true
+        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/metro-ai-suite-repo/image-based-video-search/ -f txt -o /src/reports/bandit-report.txt || true >> $GITHUB_STEP_SUMMARY
+        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/metro-ai-suite-repo/image-based-video-search/ -f json -o /src/reports/bandit-report.json || true
 
     - name: Summarize Bandit findings
       if: always()
