@@ -37,7 +37,7 @@ Before you begin, ensure the following:
 ### 1. Deploy the Source Code
 
 If you want to clone a specific release branch, replace `main` with the desired tag.
-To learn more on partial cloning, check the [Repository Cloning guide](https://docs.openedgeplatform.intel.com/dev/OEP-articles/contribution-guide.html#repository-cloning-partial-cloning).
+To learn more on partial cloning, check the [Repository Cloning guide](https://docs.openedgeplatform.intel.com/2026.3/OEP-articles/contribution-guide.html#repository-cloning-partial-cloning).
 
 Clone the suite to your Edge Server:
 

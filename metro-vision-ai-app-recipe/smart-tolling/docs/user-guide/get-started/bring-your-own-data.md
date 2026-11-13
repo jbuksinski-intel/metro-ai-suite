@@ -43,11 +43,11 @@ calibrated on it, exported as a `.zip` archive. At startup, the `scene-uploader`
 imports every `<scene>/<scene>.zip` found under `src/webserver/scenes/`.
 
 - Build and calibrate your scene using Scenescape's
-  [Create a New Scene](https://docs.openedgeplatform.intel.com/dev/scenescape/how-to-guides/build-a-scene/create-new-scene.html)
-  and [Integrate Cameras and Sensors](https://docs.openedgeplatform.intel.com/dev/scenescape/how-to-guides/integrate-cameras-and-sensors.html)
+  [Create a New Scene](https://docs.openedgeplatform.intel.com/2026.3/scenescape/how-to-guides/build-a-scene/create-new-scene.html)
+  and [Integrate Cameras and Sensors](https://docs.openedgeplatform.intel.com/2026.3/scenescape/how-to-guides/integrate-cameras-and-sensors.html)
   guides.
 - Export your scene to `src/webserver/scenes/Smart-Tolling/Smart-Tolling.zip` by following
-  [Export the Scene](https://docs.openedgeplatform.intel.com/dev/scenescape/how-to-guides/build-a-scene/create-new-scene.html#exporting-and-importing-the-scene).
+  [Export the Scene](https://docs.openedgeplatform.intel.com/2026.3/scenescape/how-to-guides/build-a-scene/create-new-scene.html#exporting-and-importing-the-scene).
   If you keep this exact ZIP name, no further changes are needed. To use a different name, see
   the step below.
 
@@ -92,4 +92,4 @@ them into the application accordingly.
 
 - [Get Started](../get-started.md)
 - [Perception Layer](../how-it-works/perception-layer.md)
-- [Scenescape Documentation](https://docs.openedgeplatform.intel.com/dev/scenescape/index.html)
+- [Scenescape Documentation](https://docs.openedgeplatform.intel.com/2026.3/scenescape/index.html)

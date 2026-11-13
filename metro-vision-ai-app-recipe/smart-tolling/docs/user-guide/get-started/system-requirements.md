@@ -33,7 +33,7 @@ This section provides detailed hardware, software, and platform requirements to 
 > [!NOTE]
 > Users can also create applications tailored to their use case using models supported by
 > Deep Learning Streamer (DL Streamer).
-> Check [the list of supported models](https://docs.openedgeplatform.intel.com/dev/edge-ai-libraries/dlstreamer/supported_models.html) for the latest information.
+> Check [the list of supported models](https://docs.openedgeplatform.intel.com/2026.3/edge-ai-libraries/dlstreamer/supported_models.html) for the latest information.
 
 ## Validation
 
